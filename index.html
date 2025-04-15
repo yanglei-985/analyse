@@ -1,0 +1,580 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="fr"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;法语词汇分析工具&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 全局样式 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Arial', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1, h2, h3 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2c3e50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 输入区域样式 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.input-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>textarea {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 120px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resize: vertical;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.options-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8f9fa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e9ecef;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option-label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #2980b9;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 结果区域样式 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.result-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.highlighted-text {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8f9fa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left: 4px solid #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.word {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2px 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.word:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e3f2fd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.analysis-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.analysis-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-width: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.analysis-card h3 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #eee;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.analysis-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.analysis-item h4 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2c3e50;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.analysis-item p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.5;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.usage-example {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8f9fa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.teacher-analysis {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f8ff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left: 4px solid #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.teacher-analysis h3 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 响应式设计 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>.analysis-card {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>min-width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 词汇提示框样式 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tooltip {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #2c3e50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 100;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tooltip::after {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: -5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-width: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-style: solid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #2c3e50 transparent transparent transparent;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.word:hover .tooltip {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;法语词汇分析工具&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="input-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;输入法语题目&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea id="question-input" placeholder="请输入法语题目，例如：Les villes, aidées par l'État, cherchent à favoriser l'usage de modes de déplacement plus écologiques."&gt;&lt;/textarea&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="options-container" id="options-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- 选项将通过JavaScript动态添加 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="analyze-btn"&gt;分析&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="result-section" id="result-section" style="display: none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;分析结果&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="highlighted-text" id="highlighted-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- 高亮文本将通过JavaScript动态添加 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="analysis-container" id="analysis-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- 分析卡片将通过JavaScript动态添加 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="teacher-analysis" id="teacher-analysis"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;教师解析&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="teacher-analysis-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- 教师解析内容将通过JavaScript动态添加 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 词汇数据库（示例数据，可以扩展）</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const verbDatabase = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'favoriser': {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>meaning: '促进，有利于',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prepositions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'à + infinitif', example: 'favoriser à développer' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'direct object', example: 'favoriser le développement' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>usage: 'favoriser + 直接宾语（某事物）',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>examples: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Cette mesure favorise l\'économie locale.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Le gouvernement cherche à favoriser l\'innovation.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'rassurer': {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>meaning: '使放心，安慰',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prepositions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'sur', example: 'rassurer quelqu\'un sur quelque chose' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'direct object', example: 'rassurer les investisseurs' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>usage: 'rassurer + 直接宾语（某人）+ sur + 名词（某事）',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>examples: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Le médecin a rassuré le patient sur son état de santé.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Ces mesures visent à rassurer les marchés financiers.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'encourager': {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>meaning: '鼓励，激励',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prepositions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'à + infinitif', example: 'encourager à faire' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'direct object', example: 'encourager les efforts' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>usage: 'encourager + 直接宾语（某人/某事）+ à + 动词不定式',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>examples: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Les parents encouragent leurs enfants à étudier.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Cette politique encourage l\'utilisation des transports en commun.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'maintenir': {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>meaning: '维持，保持',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prepositions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'direct object', example: 'maintenir l\'équilibre' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'en/dans', example: 'maintenir en bon état' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>usage: 'maintenir + 直接宾语（某事物）+ en/dans + 名词',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>examples: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Il faut maintenir une distance de sécurité.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'L\'entreprise a réussi à maintenir sa position sur le marché.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'envisager': {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>meaning: '考虑，设想',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prepositions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'de + infinitif', example: 'envisager de partir' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'direct object', example: 'envisager une solution' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>usage: 'envisager + 直接宾语（某事）/ envisager + de + 动词不定式',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>examples: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Nous envisageons d\'acheter une maison l\'année prochaine.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Le gouvernement envisage plusieurs solutions pour résoudre ce problème.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'chercher': {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>meaning: '寻找，试图',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prepositions: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'à + infinitif', example: 'chercher à comprendre' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ prep: 'direct object', example: 'chercher une solution' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>usage: 'chercher + 直接宾语（某物）/ chercher + à + 动词不定式',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>examples: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Je cherche mes clés.',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>'Ils cherchent à améliorer leurs performances.'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 页面加载完成后执行</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const questionInput = document.getElementById('question-input');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const optionsContainer = document.getElementById('options-container');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const analyzeBtn = document.getElementById('analyze-btn');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resultSection = document.getElementById('result-section');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const highlightedText = document.getElementById('highlighted-text');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const analysisContainer = document.getElementById('analysis-container');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const teacherAnalysisContent = document.getElementById('teacher-analysis-content');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 示例题目</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const exampleQuestion = "Les villes, aidées par l'État, cherchent à favoriser l'usage de modes de déplacement plus écologiques.\nA. rassurer<span class="Apple-converted-space">  </span>B. encourager<span class="Apple-converted-space">  </span>C. maintenir<span class="Apple-converted-space">  </span>D. envisager";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionInput.value = exampleQuestion;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 解析题目，提取选项</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function parseQuestion(text) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const lines = text.split('\n');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const questionText = lines[0];</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 提取选项</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const optionsLine = lines.find(line =&gt; line.includes('A.'));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const options = [];</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (optionsLine) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const optionMatches = optionsLine.match(/[A-D]\.\s*\w+/g);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (optionMatches) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>optionMatches.forEach(match =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const [label, word] = match.split('.');</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>options.push({</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>label: label.trim(),</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>word: word.trim()</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>return {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>questionText,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 显示选项</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function displayOptions(options) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsContainer.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options.forEach(option =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const optionElement = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>optionElement.className = 'option';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>optionElement.innerHTML = `&lt;span class="option-label"&gt;${option.label}.&lt;/span&gt; ${option.word}`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>optionsContainer.appendChild(optionElement);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 高亮显示文本，并添加法语助手链接</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function highlightText(text) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const words = text.split(/\s+/);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const highlightedWords = words.map(word =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// 清理单词（去除标点符号）</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const cleanWord = word.replace(/[.,;:!?()]/g, '');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (cleanWord.length &gt; 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// 保留原始单词的标点符号</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const punctuation = word.replace(cleanWord, '');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>return `&lt;span class="word" data-word="${cleanWord}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>${cleanWord}${punctuation}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;span class="tooltip"&gt;点击查询 "${cleanWord}"&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return word;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>highlightedText.innerHTML = highlightedWords.join(' ');</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 为每个单词添加点击事件</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.querySelectorAll('.word').forEach(wordElement =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>wordElement.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const word = this.getAttribute('data-word');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>window.open(`https://www.frdic.com/dicts/fr/${encodeURIComponent(word)}`, '_blank');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 分析动词</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function analyzeVerbs(options) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>analysisContainer.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>options.forEach(option =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const verb = option.word;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const verbData = verbDatabase[verb] || {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>meaning: '暂无数据',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>prepositions: [],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>usage: '暂无数据',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>examples: []</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>};</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const card = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>card.className = 'analysis-card';</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let prepositionsHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (verbData.prepositions &amp;&amp; verbData.prepositions.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>verbData.prepositions.forEach(prep =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>prepositionsHTML += `&lt;p&gt;&lt;strong&gt;${prep.prep}&lt;/strong&gt;: ${prep.example}&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>prepositionsHTML = '&lt;p&gt;暂无介词搭配数据&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let examplesHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (verbData.examples &amp;&amp; verbData.examples.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>verbData.examples.forEach(example =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>examplesHTML += `&lt;div class="usage-example"&gt;${example}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>card.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;${option.label}. ${verb}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="analysis-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4&gt;核心意思&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;${verbData.meaning}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="analysis-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4&gt;常见介词搭配&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>${prepositionsHTML}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="analysis-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4&gt;用法&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p&gt;${verbData.usage}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="analysis-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4&gt;例句&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>${examplesHTML}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>`;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>analysisContainer.appendChild(card);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 提供教师解析</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function provideTeacherAnalysis(questionText, options) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 示例解析，实际应用中可以根据题目内容动态生成</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const analysis = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;这道题目考察学生对动词"chercher à favoriser"结构的理解和对四个选项动词的辨析能力。&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;原句中"cherchent à favoriser"表示"寻求促进/有利于"，其中：&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;"chercher à + 动词不定式"是一个常见结构，表示"寻求做某事"&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;"favoriser"作为及物动词，表示"促进，有利于"，后接直接宾语&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;分析四个选项：&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;rassurer（使放心，安慰）&lt;/strong&gt;：语义上与原句不符，城市不是要"使人放心"生态出行方式&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;encourager（鼓励，激励）&lt;/strong&gt;：语义上与"favoriser"最接近，都有促进、鼓励的含义，是正确答案&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;maintenir（维持，保持）&lt;/strong&gt;：语义上表示保持现状，而原句强调的是促进使用，不符合语境&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;envisager（考虑，设想）&lt;/strong&gt;：语义上表示考虑或设想，而原句表达的是积极促进的行动，不仅仅是考虑&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;因此，正确答案是B. encourager。&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;这道题目主要考察：&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ol&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;动词"chercher à + 动词不定式"结构的理解&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;近义动词的辨析能力&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;动词在特定语境中的准确使用&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ol&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;学生需要掌握这些动词的核心含义和常见用法，特别是它们与介词的搭配关系，以便在类似的语境中正确选择合适的动词。&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>teacherAnalysisContent.innerHTML = analysis;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 分析按钮点击事件</p>
+<p class="p1"><span class="Apple-converted-space">            </span>analyzeBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const questionText = questionInput.value;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const { questionText: text, options } = parseQuestion(questionText);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 显示结果区域</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultSection.style.display = 'block';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 高亮显示文本</p>
+<p class="p1"><span class="Apple-converted-space">                </span>highlightText(text);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 显示选项</p>
+<p class="p1"><span class="Apple-converted-space">                </span>displayOptions(options);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 分析动词</p>
+<p class="p1"><span class="Apple-converted-space">                </span>analyzeVerbs(options);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 提供教师解析</p>
+<p class="p1"><span class="Apple-converted-space">                </span>provideTeacherAnalysis(text, options);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// 滚动到结果区域</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultSection.scrollIntoView({ behavior: 'smooth' });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 初始加载示例题目</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const { options } = parseQuestion(exampleQuestion);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>displayOptions(options);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 添加自定义动词数据的函数</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addVerbData(verb, data) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>verbDatabase[verb] = data;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// API接口示例（可以由用户自行实现）</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function loadVerbDatabase(url) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 这里可以实现从外部加载动词数据库的功能</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 例如通过fetch API从服务器获取数据</p>
+<p class="p1"><span class="Apple-converted-space">            </span>fetch(url)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>.then(response =&gt; response.json())</p>
+<p class="p1"><span class="Apple-converted-space">                </span>.then(data =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// 合并数据到verbDatabase</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Object.assign(verbDatabase, data);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>})</p>
+<p class="p1"><span class="Apple-converted-space">                </span>.catch(error =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.error('加载动词数据库失败:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 示例：如何使用API接口</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// loadVerbDatabase('https://example.com/api/french-verbs');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
